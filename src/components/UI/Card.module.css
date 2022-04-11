@@ -14,13 +14,13 @@
 /* phones */
 @media only screen and (max-width: 512px) {
 	.card {
-		width: 30vw;
+		width: 60vw;
 	}
 }
 
 /* tablets */
 @media only screen and (min-width: 513px) and (max-width: 880px) {
 	.card {
-		width: 20vw;
+		width: 50vw;
 	}
 }
