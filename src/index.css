@@ -1,5 +1,6 @@
 :root {
-	--font: 'Readex Pro';
+	--font: 200 16px 'Readex Pro', sans-serif;
+	--button-font: 600 16px 'Readex Pro', sans-serif;
 	--primaryColor: #5ce595;
 	--primaryGradient: linear-gradient(
 		270.07deg,

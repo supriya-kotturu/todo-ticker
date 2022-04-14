@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 
-import { Card, Container, Input } from './components/UI';
+import { Card, Container, Input, Button } from './components/UI';
 
 function App() {
 	return (
 		<Container>
-			,
 			<Card>
 				<h1>No Tasks</h1>
 				<Input
@@ -39,6 +38,7 @@ function App() {
 					value='"red'
 					handleChange={() => console.log('er')}
 				/>
+				<Button type='submit' title='Add Timer' handleClick={() => {}} />
 			</Card>
 		</Container>
 	);

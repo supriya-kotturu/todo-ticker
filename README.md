@@ -30,8 +30,8 @@
 ## Todo
 
 - [x] TS setup with vite
-- [ ] UI Components
-  - [ ] Button
+- [x] UI Components
+  - [x] Button
   - [x] Text Input
   - [x] Checkbox
   - [x] Card
