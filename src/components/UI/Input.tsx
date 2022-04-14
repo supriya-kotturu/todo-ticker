@@ -43,11 +43,6 @@ export const Input = ({
 				</div>
 			);
 		case 'checkbox':
-			const checkBoxLabel = (
-				<label className={styles['input-checkbox-label']} htmlFor={title}>
-					{label}
-				</label>
-			);
 			return (
 				<div className={styles['input-checkbox-container']}>
 					<input
@@ -57,7 +52,9 @@ export const Input = ({
 						name={title}
 						value={title}
 					/>
-					{checkBoxLabel}
+					<label className={styles['input-checkbox-label']} htmlFor={title}>
+						{label}
+					</label>
 				</div>
 			);
 	}
