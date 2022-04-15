@@ -38,7 +38,7 @@
   - [x] Container
 - [ ] Components
   - [ ] NoTasks (initial)
-  - [ ] AddTask
+  - [x] AddTask
   - [ ] Task
   - [ ] Timer
   - [ ] SideNav

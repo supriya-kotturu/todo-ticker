@@ -2,16 +2,18 @@ import React from 'react';
 import styles from './Input.module.css';
 
 interface InputProps {
+	id: string;
 	title: string;
 	type: 'text' | 'checkbox';
 	value: string;
-	handleChange: () => void;
+	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	placeholder?: string;
 	label?: string;
 	showLabel?: boolean;
 }
 
 export const Input = ({
+	id,
 	title,
 	type,
 	value,
@@ -34,6 +36,7 @@ export const Input = ({
 					)}
 					<input
 						className={styles['input-text']}
+						id={id}
 						name={title}
 						type={type}
 						value={value}
@@ -48,7 +51,7 @@ export const Input = ({
 					<input
 						className={styles['input-checkbox']}
 						type={type}
-						id={title}
+						id={id}
 						name={title}
 						value={title}
 					/>

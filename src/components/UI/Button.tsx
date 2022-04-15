@@ -13,7 +13,7 @@ export const Button = ({ title, type, handleClick }: ButtonProps) => {
 			return (
 				<button
 					className={styles['button-default']}
-					type={type}
+					type='button'
 					onClick={handleClick}
 				>
 					{title}
@@ -23,8 +23,8 @@ export const Button = ({ title, type, handleClick }: ButtonProps) => {
 			return (
 				<button
 					className={styles['button-submit']}
-					type={type}
-					onSubmit={handleClick}
+					type='button'
+					onClick={handleClick}
 				>
 					{title}
 				</button>
