@@ -1,21 +1,20 @@
-import React, { useCallback, useState } from 'react';
-import { Card, Container, Input } from './UI';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AddTask } from './AddTask';
 import { Task } from '../Interfaces';
+import { fetchTasks } from '../redux/task';
+import { useAppDispatch, useAppSelector } from '../redux';
 
 export const Dashboard = () => {
-	const [tasks, setTasks] = useState<Task[]>(
-		JSON.parse(localStorage.getItem('tasks') || '[]') || [],
-	);
-	const handleAddTask = useCallback((newTask: Task) => {
-		console.log(newTask, tasks);
-		setTasks((prevTasks) => [newTask, ...prevTasks]);
-		localStorage.setItem('tasks', JSON.stringify(tasks));
+	const { tasks } = useAppSelector((state) => state.tasks);
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(fetchTasks());
 	}, []);
 
 	return (
 		<div>
-			<AddTask handleAddTask={handleAddTask} />
+			<AddTask />
 			{tasks.map((task: Task) => (
 				<p key={task.id}>{task.timer}</p>
 			))}

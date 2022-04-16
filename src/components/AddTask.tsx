@@ -1,16 +1,17 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { Container, Card, Input, Button } from './UI';
 
 import { Task, Todo } from '../Interfaces';
 import { getIndex } from '../utils';
+import { updateTasks } from '../redux/task';
+import { useAppDispatch, useAppSelector } from '../redux';
 
-interface AddTaskProps {
-	handleAddTask: (task: Task) => void;
-}
+export const AddTask = () => {
+	const { tasks } = useAppSelector((state) => state.tasks);
+	const dispatch = useAppDispatch();
 
-export const AddTask = ({ handleAddTask }: AddTaskProps) => {
 	const initialTodoItem: Todo = { id: uuidv4(), title: '', status: 'pending' };
 	const [todoList, addToTheTodoList] = useState<Todo[]>([initialTodoItem]);
 	const [timer, setTimer] = useState<string>('');
@@ -39,28 +40,36 @@ export const AddTask = ({ handleAddTask }: AddTaskProps) => {
 
 	const addBlankTask = useCallback(() => {
 		addToTheTodoList((prevTodoList: Todo[]) => {
-			console.log(prevTodoList, initialTodoItem);
 			return [...prevTodoList, { ...initialTodoItem, id: uuidv4(), title: '' }];
 		});
 	}, []);
 
-	const handleTimer = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleTimer = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setTimer(e.target.value);
-	}, []);
+	};
 
-	const handleCreateTask = useCallback(() => {
-		const newTask: Task = {
-			id: uuidv4(),
-			timer: timer,
-			list: todoList,
-			status: 'running',
-		};
-		handleAddTask(newTask);
-	}, []);
+	const resetTaskForm = () => {
+		addToTheTodoList([{ ...initialTodoItem, title: '' }]);
+		setTimer('');
+	};
+
+	const handleCreateTask = useCallback(
+		(timer, todoList) => {
+			const newTask: Task = {
+				id: uuidv4(),
+				timer: timer,
+				list: todoList,
+				status: 'running',
+			};
+			console.log(timer, newTask, 'opop');
+			dispatch(updateTasks([newTask, ...tasks]));
+			resetTaskForm();
+		},
+		[timer, todoList],
+	);
 
 	return (
 		<Container>
-			{/* <form method='post' action=''> */}
 			<Card>
 				<h1>Add a Task</h1>
 				<Input
@@ -69,7 +78,7 @@ export const AddTask = ({ handleAddTask }: AddTaskProps) => {
 					type='text'
 					value={timer}
 					placeholder='hh : mm'
-					handleChange={handleTimer}
+					handleChange={(e) => handleTimer(e)}
 				/>
 				{todoList.map((todo: Todo) => (
 					<Input
@@ -91,9 +100,12 @@ export const AddTask = ({ handleAddTask }: AddTaskProps) => {
 						/>
 					</div>
 				</div>
-				<Button title='Create' type='submit' handleClick={handleCreateTask} />
+				<Button
+					title='Create'
+					type='submit'
+					handleClick={() => handleCreateTask(timer, todoList)}
+				/>
 			</Card>
-			{/* </form> */}
 		</Container>
 	);
 };
