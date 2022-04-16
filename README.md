@@ -44,5 +44,6 @@
   - [ ] SideNav
 - [ ] Task state
 - [ ] Filter the Tasks
-- [ ] Add redux
+- [ ] Add Router
+- [x] Add redux
 - [ ] Add local storage
