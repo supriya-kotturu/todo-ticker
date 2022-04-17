@@ -13,9 +13,16 @@ export const Ticker = ({ task }: TickerProps) => {
 	const { id, timer, status, list } = task;
 
 	const timerArry = timer.split(':');
-	const h = timerArry.length === 2 ? parseInt(timerArry[0]) : 0;
+	const h =
+		status === 'running' && timerArry.length === 2 ? parseInt(timerArry[0]) : 0;
 	const m =
-		timerArry.length === 2 ? parseInt(timerArry[1]) : parseInt(timerArry[0]);
+		status === 'running' && timerArry.length === 2
+			? parseInt(timerArry[1]) > 0
+				? parseInt(timerArry[1]) - 1
+				: parseInt(timerArry[1])
+			: parseInt(timerArry[0]) > 0
+			? parseInt(timerArry[0]) - 1
+			: parseInt(timerArry[0]);
 	const s = status === 'running' ? 60 : 0;
 
 	const [hr, setHr] = useState<number>(h);
@@ -39,7 +46,7 @@ export const Ticker = ({ task }: TickerProps) => {
 					if (min > 0 && sec === 0) {
 						setSec(60);
 						dispatch(updateTimer(task.id, `${min}`));
-					} else if (min === 0 && sec === 0 && hr !== 0) {
+					} else if (min === 0 && sec === 0) {
 						dispatch(updateStatus(task.id, 'expired'));
 						dispatch(updateTimer(task.id, `${min}`));
 						clearTimers();
@@ -88,8 +95,8 @@ export const Ticker = ({ task }: TickerProps) => {
 						: styles['ticker-expired']
 				}
 			>
-				{hr !== 0 && `${hr} : `}
-				{min} : {sec < 10 ? '0' + sec : sec}
+				{hr < 10 ? '0' + hr : hr} : {min < 10 ? '0' + min : min} :{' '}
+				{sec < 10 ? '0' + sec : sec}
 			</h2>
 		</div>
 	);
