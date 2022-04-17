@@ -21,7 +21,7 @@
 /* tablets */
 @media only screen and (min-width: 513px) and (max-width: 880px) {
 	.card {
-		width: 50vw;
+		width: 70%;
 		padding: 2rem;
 	}
 }
