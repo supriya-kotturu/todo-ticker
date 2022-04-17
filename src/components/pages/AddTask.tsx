@@ -25,7 +25,7 @@ export const AddTask = () => {
 
 				if (newTodo) {
 					newTodo.title = e.target.value;
-					const index = getIndex(prevTodoList, newTodo);
+					const index = getIndex(prevTodoList, newTodo.id);
 					if (index !== -1) {
 						const targetTodoList = [...prevTodoList];
 						targetTodoList[index] = newTodo;
@@ -61,7 +61,6 @@ export const AddTask = () => {
 				list: todoList,
 				status: 'running',
 			};
-			console.log(timer, newTask, 'opop');
 			dispatch(updateTasks([newTask, ...tasks]));
 			resetTaskForm();
 		},

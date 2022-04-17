@@ -10,6 +10,7 @@ interface InputProps {
 	placeholder?: string;
 	label?: string;
 	showLabel?: boolean;
+	isDisabled?: boolean;
 }
 
 export const Input = ({
@@ -21,6 +22,7 @@ export const Input = ({
 	placeholder,
 	label,
 	showLabel = false,
+	isDisabled,
 }: InputProps) => {
 	switch (type) {
 		case 'text':
@@ -54,8 +56,18 @@ export const Input = ({
 						id={id}
 						name={title}
 						value={title}
+						onChange={handleChange}
+						disabled={isDisabled}
 					/>
-					<label className={styles['input-checkbox-label']} htmlFor={title}>
+
+					<label
+						className={
+							isDisabled
+								? `${styles['input-checkbox-label-disabled']} ${styles['input-checkbox-label']}`
+								: `${styles['input-checkbox-label']}`
+						}
+						htmlFor={title}
+					>
 						{label}
 					</label>
 				</div>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Task } from '../../Interfaces';
 import { Link } from 'react-router-dom';
 import { fetchTasks } from '../../redux/task';
@@ -25,7 +25,7 @@ export const Dashboard = () => {
 			<br />
 			<div className={styles['tasks-container']}>
 				{tasks.map((task: Task) => (
-					<TaskCard task={task} />
+					<TaskCard task={task} key={task.id} />
 				))}
 			</div>
 		</>

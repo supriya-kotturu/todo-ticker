@@ -39,3 +39,7 @@
 	width: 32px;
 	margin: 8px 16px;
 }
+
+.input-checkbox-label-disabled {
+	text-decoration: line-through;
+}

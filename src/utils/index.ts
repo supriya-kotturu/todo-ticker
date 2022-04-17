@@ -1,8 +1,8 @@
 import { Todo, Task } from '../Interfaces';
 
-export const getIndex = (todoList: Todo[], todo: Todo): number => {
-	for (let i = 0; i < todoList.length; i++) {
-		if (todoList[i].id === todo.id) {
+export const getIndex = (list: Todo[] | Task[], id: string): number => {
+	for (let i = 0; i < list.length; i++) {
+		if (list[i].id === id) {
 			return i;
 		}
 	}
