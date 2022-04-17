@@ -5,6 +5,7 @@ import { fetchTasks } from '../../redux/task';
 import { SideNav } from '../SideNav';
 import { Dashboard } from '../Dashboard';
 import styles from './Home.module.css';
+import { NoTasks } from '../NoTasks';
 
 export const Home = () => {
 	const { tasks } = useAppSelector((state) => state.tasks);
@@ -31,12 +32,18 @@ export const Home = () => {
 
 	return (
 		<div className={styles['home-container']}>
-			<div className={styles['home-side-nav']}>
-				<SideNav filter={filter} handleFilter={setFilter} />
-			</div>
-			<div className={styles['home-filter-tasks']}>
-				<Dashboard tasks={filteredTasks} />
-			</div>
+			{tasks.length > 0 ? (
+				<>
+					<div className={styles['home-side-nav']}>
+						<SideNav filter={filter} handleFilter={setFilter} />
+					</div>
+					<div className={styles['home-filter-tasks']}>
+						<Dashboard tasks={filteredTasks} />
+					</div>
+				</>
+			) : (
+				<NoTasks />
+			)}
 		</div>
 	);
 };

@@ -1,0 +1,20 @@
+.no-tasks-card-container {
+	min-width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 14px;
+}
+
+.add-tasks-button-container {
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	display: flex;
+}
+
+p {
+	margin: 16px 0px;
+	color: #828282;
+	font-weight: 300;
+}

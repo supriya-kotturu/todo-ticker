@@ -42,7 +42,7 @@
   - [x] Container
 - [ ] Components
   - [x] Dashboard
-  - [ ] NoTasks (initial)
+  - [x] NoTasks (initial)
   - [x] AddTask
   - [x] Task
   - [x] Timer
