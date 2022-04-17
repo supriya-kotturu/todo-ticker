@@ -41,14 +41,16 @@
   - [x] Card
   - [x] Container
 - [ ] Components
-  - [ ] Dashboard
+  - [x] Dashboard
   - [ ] NoTasks (initial)
   - [x] AddTask
   - [x] Task
-  - [ ] Timer
+  - [x] Timer
   - [ ] SideNav
+    - [ ] mobile / tablet
+    - [x] web
 - [ ] Task state
-- [ ] Filter the Tasks
+- [x] Filter the Tasks
 - [x] Add Router
 - [x] Add redux
 - [x] Add local storage

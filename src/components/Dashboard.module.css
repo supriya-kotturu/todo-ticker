@@ -4,11 +4,10 @@
 	justify-content: center;
 	align-items: center;
 	align-content: space-between;
-	width: 80%;
 }
 
 .button-container {
-	width: 58vw;
+	width: 72vw;
 	justify-content: flex-end;
 	align-items: center;
 	align-content: center;

@@ -69,7 +69,7 @@ export const AddTask = () => {
 
 	return (
 		<Container>
-			<form action='/dashboard'>
+			<form action='/'>
 				<Card>
 					<h1>Add a Task</h1>
 					<Input

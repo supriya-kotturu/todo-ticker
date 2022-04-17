@@ -1,20 +1,15 @@
-import React, { useEffect } from 'react';
-import { Task } from '../../Interfaces';
+import React from 'react';
+import { Task } from './../Interfaces';
 import { Link } from 'react-router-dom';
-import { fetchTasks } from '../../redux/task';
-import { useAppDispatch, useAppSelector } from '../../redux';
-import { TaskCard } from '../TaskCard';
+import { TaskCard } from './TaskCard';
 import styles from './Dashboard.module.css';
-import { Button } from '../UI';
+import { Button } from './UI';
 
-export const Dashboard = () => {
-	const { tasks } = useAppSelector((state) => state.tasks);
-	const dispatch = useAppDispatch();
+interface DashboardProps {
+	tasks: Task[];
+}
 
-	useEffect(() => {
-		dispatch(fetchTasks());
-	}, []);
-
+export const Dashboard = ({ tasks }: DashboardProps) => {
 	return (
 		<>
 			<div className={styles['button-container']}>

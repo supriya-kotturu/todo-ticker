@@ -1,0 +1,40 @@
+.home-container {
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+}
+
+.home-side-nav {
+	height: full;
+	min-height: 100vh;
+	padding: 28px;
+	min-width: 16%;
+	background-color: #f2f2f2;
+}
+
+.home-filter-tasks {
+	padding: 28px;
+	width: 72%;
+}
+
+/* phones */
+@media only screen and (max-width: 512px) {
+	.home-side-nav {
+		display: none;
+	}
+
+	.home-filter-tasks {
+		width: 100%;
+	}
+}
+
+/* tablets */
+@media only screen and (min-width: 513px) and (max-width: 880px) {
+	.home-side-nav {
+		display: none;
+	}
+
+	.home-filter-tasks {
+		width: 100%;
+	}
+}

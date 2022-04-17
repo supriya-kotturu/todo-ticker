@@ -12,3 +12,5 @@ export interface Task {
 	list: Todo[];
 	status: 'running' | 'expired';
 }
+
+export type Filter = 'running' | 'expired' | 'all';
