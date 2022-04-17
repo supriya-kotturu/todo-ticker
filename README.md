@@ -41,9 +41,10 @@
   - [x] Card
   - [x] Container
 - [ ] Components
+  - [ ] Dashboard
   - [ ] NoTasks (initial)
   - [x] AddTask
-  - [ ] Task
+  - [x] Task
   - [ ] Timer
   - [ ] SideNav
 - [ ] Task state

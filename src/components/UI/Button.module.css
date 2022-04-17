@@ -9,10 +9,8 @@
 	font: var(--button-font);
 	box-sizing: border-box;
 	border-radius: 5px;
-	flex: none;
-	order: 0;
+	text-decoration: none;
 	align-self: stretch;
-	flex-grow: 0;
 	margin: 32px 0px;
 }
 
@@ -32,8 +30,6 @@
 	font: var(--button-font);
 	color: #ffffff;
 	border-radius: 5px;
-	flex: none;
-	order: 1;
-	flex-grow: 0;
+	text-decoration: none;
 	margin: 24px 0px;
 }

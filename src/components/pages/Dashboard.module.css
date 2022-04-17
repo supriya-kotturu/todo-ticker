@@ -1,0 +1,30 @@
+.tasks-container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: space-between;
+	width: 80%;
+}
+
+.button-container {
+	width: 58vw;
+	justify-content: flex-end;
+	align-items: center;
+	align-content: center;
+	display: flex;
+}
+
+/* phones */
+@media only screen and (max-width: 512px) {
+	.button-container {
+		width: 72vw;
+	}
+}
+
+/* tablets */
+@media only screen and (min-width: 513px) and (max-width: 880px) {
+	.button-container {
+		width: 55vw;
+	}
+}

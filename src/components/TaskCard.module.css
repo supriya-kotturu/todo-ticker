@@ -1,0 +1,19 @@
+.task-container {
+	width: 24em;
+	justify-content: center;
+	align-items: stretch;
+}
+
+/* phones */
+@media only screen and (max-width: 512px) {
+	.task-container {
+		width: 80vw;
+	}
+}
+
+/* tablets */
+@media only screen and (min-width: 513px) and (max-width: 880px) {
+	.task-container {
+		display: flex;
+	}
+}
