@@ -1,5 +1,11 @@
 import { TaskState, TaskActions } from './taskTypes';
-import { getItemFromLocalStorage, setItemInLocalStorage } from '../../utils';
+import {
+	getIndex,
+	getItemFromLocalStorage,
+	setItemInLocalStorage,
+} from '../../utils';
+import { Task } from '../../Interfaces';
+import { stat } from 'fs';
 // import { fetchTasks } from './taskActions';
 
 const initialTaskState: TaskState = {
@@ -11,6 +17,15 @@ const initialTaskState: TaskState = {
 function loadFromLocalStorage() {
 	return getItemFromLocalStorage('tasks');
 }
+
+const findTask = (taskId: string): number => {
+	const tasks: Task[] = getItemFromLocalStorage('tasks');
+	let index = -1;
+	if (tasks) {
+		index = getIndex(tasks, taskId);
+	}
+	return index;
+};
 
 export function taskReducer(
 	state: TaskState = initialTaskState,
@@ -46,6 +61,36 @@ export function taskReducer(
 				tasks: action.payload.tasks,
 				// error: '',
 			};
+		case 'UPDATE_TODO_LIST': {
+			const index = findTask(action.payload.taskId);
+			const updatedTasks = [...state.tasks];
+			updatedTasks[index].list = action.payload.newTodoList;
+
+			return {
+				...state,
+				tasks: updatedTasks,
+			};
+		}
+		case 'UPDATE_TIMER': {
+			const index = findTask(action.payload.taskId);
+			const updatedTasks = [...state.tasks];
+			updatedTasks[index].timer = action.payload.timer;
+
+			return {
+				...state,
+				tasks: updatedTasks,
+			};
+		}
+		case 'UPDATE_STATUS': {
+			const index = findTask(action.payload.taskId);
+			const updatedTasks = [...state.tasks];
+			updatedTasks[index].status = action.payload.status;
+
+			return {
+				...state,
+				tasks: updatedTasks,
+			};
+		}
 		default:
 			return state;
 	}

@@ -1,9 +1,15 @@
 import { Dispatch } from 'redux';
-import { Task } from '../../Interfaces';
-import { FetchTasks, TaskState } from './taskTypes';
+import { Task, Todo } from '../../Interfaces';
+import {
+	FetchTasks,
+	TaskState,
+	UpdateTodoList,
+	UpdateTimer,
+	UpdateStatus,
+} from './taskTypes';
 import { TaskActions } from './taskTypes';
 // import { AppThunk } from '../store';
-import { getItemFromLocalStorage } from '../../utils';
+import { getIndex, getItemFromLocalStorage } from '../../utils';
 
 export const fetchTasks = (): TaskActions => ({
 	type: 'FETCH_TASKS',
@@ -38,6 +44,33 @@ export const updateTasks = (tasks: Task[]): TaskActions => ({
 		// loading: false,
 		tasks,
 		// error: '',
+	},
+});
+
+export const updateTodoList = (
+	taskId: string,
+	newTodoList: Todo[],
+): UpdateTodoList => ({
+	type: 'UPDATE_TODO_LIST',
+	payload: { taskId, newTodoList },
+});
+
+export const updateTimer = (taskId: string, timer: string): UpdateTimer => ({
+	type: 'UPDATE_TIMER',
+	payload: {
+		taskId,
+		timer,
+	},
+});
+
+export const updateStatus = (
+	taskId: string,
+	status: 'expired' | 'running',
+): UpdateStatus => ({
+	type: 'UPDATE_STATUS',
+	payload: {
+		taskId,
+		status,
 	},
 });
 
