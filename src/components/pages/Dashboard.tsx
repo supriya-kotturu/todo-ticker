@@ -18,7 +18,7 @@ export const Dashboard = () => {
 	return (
 		<>
 			<div className={styles['button-container']}>
-				<Link to='/add-task'>
+				<Link to='/add-task' style={{ textDecoration: 'none' }}>
 					<Button title='Add Task' type='submit' handleClick={() => {}} />
 				</Link>
 			</div>

@@ -9,7 +9,6 @@
 	font: var(--button-font);
 	box-sizing: border-box;
 	border-radius: 5px;
-	text-decoration: none;
 	align-self: stretch;
 	margin: 32px 0px;
 }
@@ -30,6 +29,5 @@
 	font: var(--button-font);
 	color: #ffffff;
 	border-radius: 5px;
-	text-decoration: none;
 	margin: 24px 0px;
 }
