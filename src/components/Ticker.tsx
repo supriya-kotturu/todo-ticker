@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Task } from '../Interfaces';
 import { useAppDispatch } from '../redux';
 import { updateStatus, updateTimer } from '../redux/task';
+import styles from './Ticker.module.css';
 
 interface TickerProps {
 	task: Task;
@@ -74,13 +75,22 @@ export const Ticker = ({ task }: TickerProps) => {
 	useEffect(updateTicker, [hr, min, sec, task]);
 
 	useEffect(() => {
-		//
+		// TODO : timer color doesn't change when list is done
+		// get the task from root state instead of tempTask, passed as prop
 	}, [timer, task]);
 
 	return (
-		<h2>
-			{hr !== 0 && `${hr} : `}
-			{min} : {sec < 10 ? '0' + sec : sec}
-		</h2>
+		<div className={styles['ticker']}>
+			<h2
+				className={
+					task.status === 'running'
+						? styles[`ticker-running`]
+						: styles['ticker-expired']
+				}
+			>
+				{hr !== 0 && `${hr} : `}
+				{min} : {sec < 10 ? '0' + sec : sec}
+			</h2>
+		</div>
 	);
 };

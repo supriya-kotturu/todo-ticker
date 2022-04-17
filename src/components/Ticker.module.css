@@ -1,0 +1,11 @@
+.ticker {
+	margin-bottom: 24px;
+}
+
+.ticker-running {
+	color: #5ce595;
+}
+
+.ticker-expired {
+	color: #828282;
+}
