@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { AiFillPlusCircle } from 'react-icons/ai';
-import { Container, Card, Input, Button } from './UI';
+import { Container, Card, Input, Button } from '../UI';
 
-import { Task, Todo } from '../Interfaces';
-import { getIndex } from '../utils';
-import { updateTasks } from '../redux/task';
-import { useAppDispatch, useAppSelector } from '../redux';
+import { Task, Todo } from '../../Interfaces';
+import { getIndex } from '../../utils';
+import { updateTasks } from '../../redux/task';
+import { useAppDispatch, useAppSelector } from '../../redux';
 
 export const AddTask = () => {
 	const { tasks } = useAppSelector((state) => state.tasks);
@@ -70,42 +70,44 @@ export const AddTask = () => {
 
 	return (
 		<Container>
-			<Card>
-				<h1>Add a Task</h1>
-				<Input
-					id='timer'
-					title='timer'
-					type='text'
-					value={timer}
-					placeholder='hh : mm'
-					handleChange={(e) => handleTimer(e)}
-				/>
-				{todoList.map((todo: Todo) => (
+			<form action='/dashboard'>
+				<Card>
+					<h1>Add a Task</h1>
 					<Input
-						key={todo.id}
-						id={todo.id}
-						title='task'
+						id='timer'
+						title='timer'
 						type='text'
-						value={todo.title}
-						placeholder='Walk in the park'
-						handleChange={(e) => handleTodoItem(e, todo)}
+						value={timer}
+						placeholder='hh : mm'
+						handleChange={(e) => handleTimer(e)}
 					/>
-				))}
-				<div>
-					<div style={{ padding: '16px' }}>
-						<AiFillPlusCircle
-							size={28}
-							color='#5ce595'
-							onClick={addBlankTask}
+					{todoList.map((todo: Todo) => (
+						<Input
+							key={todo.id}
+							id={todo.id}
+							title='task'
+							type='text'
+							value={todo.title}
+							placeholder='Walk in the park'
+							handleChange={(e) => handleTodoItem(e, todo)}
 						/>
+					))}
+					<div>
+						<div style={{ padding: '16px' }}>
+							<AiFillPlusCircle
+								size={28}
+								color='#5ce595'
+								onClick={addBlankTask}
+							/>
+						</div>
 					</div>
-				</div>
-				<Button
-					title='Create'
-					type='submit'
-					handleClick={() => handleCreateTask(timer, todoList)}
-				/>
-			</Card>
+					<Button
+						title='Create'
+						type='submit'
+						handleClick={() => handleCreateTask(timer, todoList)}
+					/>
+				</Card>
+			</form>
 		</Container>
 	);
 };

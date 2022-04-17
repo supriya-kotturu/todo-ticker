@@ -1,10 +1,15 @@
-import { useState } from 'react';
-import styles from './App.module.css';
+import { Routes, Route } from 'react-router-dom';
 
-import { Dashboard } from './components/Dashboard';
+import { Dashboard } from './components/pages/Dashboard';
+import { AddTask } from './components/pages/AddTask';
 
 function App() {
-	return <Dashboard />;
+	return (
+		<Routes>
+			<Route path='/add-task' element={<AddTask />} />
+			<Route path='/dashboard' element={<Dashboard />} />
+		</Routes>
+	);
 }
 
 export default App;

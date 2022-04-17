@@ -23,7 +23,7 @@ export const Button = ({ title, type, handleClick }: ButtonProps) => {
 			return (
 				<button
 					className={styles['button-submit']}
-					type='button'
+					type='submit'
 					onClick={handleClick}
 				>
 					{title}
