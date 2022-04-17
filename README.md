@@ -27,6 +27,10 @@
   npm run preview
   ```
 
+## Design
+
+[figma.com](https://www.figma.com/file/k4xO56Jlkru0PhtUzdIsOn/Front-end-assignment?node-id=0%3A1)
+
 ## Todo
 
 - [x] TS setup with vite
@@ -48,3 +52,8 @@
 - [x] Add redux
 - [x] Add local storage
 - [ ] Add server
+- [x] Deploy on Netlify
+
+## Try it on Netlify
+
+[todo-ticker.netlify.app](https://todo-ticker.netlify.app/)
