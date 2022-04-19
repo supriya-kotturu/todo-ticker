@@ -1,14 +1,25 @@
 import React from 'react';
 import { Filter } from '../Interfaces';
 import { Button } from './UI';
+import { AiFillHome, AiOutlineClose } from 'react-icons/ai';
+import styles from './SideNav.module.css';
 
 interface SideNavProps {
 	filter: Filter;
 	handleFilter: React.Dispatch<React.SetStateAction<Filter>>;
+	handleShowNav: () => void;
 }
-export const SideNav = ({ filter, handleFilter }: SideNavProps) => {
+export const SideNav = ({
+	filter,
+	handleFilter,
+	handleShowNav,
+}: SideNavProps) => {
 	return (
 		<div>
+			<div className={styles['icons-container']}>
+				<AiFillHome size={28} onClick={() => handleShowNav()} />
+				<AiOutlineClose size={28} onClick={() => handleShowNav()} />
+			</div>
 			<Button
 				type={filter === 'running' ? 'selected' : 'button'}
 				title='Running'

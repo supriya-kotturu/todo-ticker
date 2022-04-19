@@ -13,28 +13,35 @@
 }
 
 .home-filter-tasks {
-	padding: 28px;
+	padding: 0px 28px;
 	width: 72%;
+}
+
+.hamburger-container {
+	padding: 24px 0px 0px 24px;
+	display: none;
 }
 
 /* phones */
 @media only screen and (max-width: 512px) {
-	.home-side-nav {
-		display: none;
-	}
-
 	.home-filter-tasks {
 		width: 100%;
+	}
+
+	.hamburger-container {
+		display: block;
 	}
 }
 
 /* tablets */
 @media only screen and (min-width: 513px) and (max-width: 880px) {
-	.home-side-nav {
-		display: none;
-	}
-
 	.home-filter-tasks {
 		width: 100%;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.hamburger-container {
+		display: block;
 	}
 }

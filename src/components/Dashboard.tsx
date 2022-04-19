@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { TaskCard } from './TaskCard';
 import styles from './Dashboard.module.css';
 import { Button } from './UI';
+import { NoTasks } from './NoTasks';
 
 interface DashboardProps {
 	tasks: Task[];
@@ -17,11 +18,13 @@ export const Dashboard = ({ tasks }: DashboardProps) => {
 					<Button title='Add Task' type='submit' handleClick={() => {}} />
 				</Link>
 			</div>
-			<br />
+			<div className={styles['status-container']}>
+				{tasks ? tasks[0]?.status : 'running'}
+			</div>
 			<div className={styles['tasks-container']}>
-				{tasks.map((task: Task) => (
-					<TaskCard task={task} key={task.id} />
-				))}
+				{tasks &&
+					tasks.map((task: Task) => <TaskCard task={task} key={task.id} />)}
+				{!tasks.length && <NoTasks />}
 			</div>
 		</>
 	);

@@ -14,16 +14,31 @@
 	display: flex;
 }
 
+.status-container {
+	padding: 8px 28px;
+	font-size: large;
+	text-transform: capitalize;
+	display: none;
+}
+
 /* phones */
 @media only screen and (max-width: 512px) {
 	.button-container {
-		width: 95%;
+		width: 90%;
+	}
+
+	.status-container {
+		display: block;
 	}
 }
 
 /* tablets */
 @media only screen and (min-width: 513px) and (max-width: 880px) {
 	.button-container {
-		width: 55vw;
+		width: 95%;
+	}
+
+	.status-container {
+		display: block;
 	}
 }

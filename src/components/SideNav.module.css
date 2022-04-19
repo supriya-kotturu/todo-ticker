@@ -1,0 +1,21 @@
+.icons-container {
+	padding-bottom: 2rem;
+	justify-content: space-between;
+	display: flex;
+	align-items: center;
+	visibility: hidden;
+}
+
+/* phones */
+@media only screen and (max-width: 512px) {
+	.icons-container {
+		visibility: visible;
+	}
+}
+
+/* tablets */
+@media only screen and (min-width: 513px) and (max-width: 880px) {
+	.icons-container {
+		visibility: visible;
+	}
+}
