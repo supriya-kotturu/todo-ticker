@@ -12,7 +12,7 @@ export const Button = ({ title, type, handleClick }: ButtonProps) => {
 		case 'button':
 			return (
 				<button
-					className={styles['button-default']}
+					className={`${styles['button-default']} ${styles['button-selected']}`}
 					type='button'
 					onClick={handleClick}
 				>
@@ -32,7 +32,7 @@ export const Button = ({ title, type, handleClick }: ButtonProps) => {
 		case 'selected':
 			return (
 				<button
-					className={`${styles['button-default']} ${styles['button-selected']}`}
+					className={styles['button-default']}
 					type='button'
 					onClick={handleClick}
 				>
