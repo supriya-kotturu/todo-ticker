@@ -11,7 +11,7 @@ interface InputProps {
 	label?: string;
 	showLabel?: boolean;
 	isDisabled?: boolean;
-	isExpired: boolean;
+	isExpired?: boolean;
 }
 
 export const Input = ({
