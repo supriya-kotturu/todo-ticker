@@ -11,6 +11,7 @@ interface InputProps {
 	label?: string;
 	showLabel?: boolean;
 	isDisabled?: boolean;
+	isExpired: boolean;
 }
 
 export const Input = ({
@@ -23,6 +24,7 @@ export const Input = ({
 	label,
 	showLabel = false,
 	isDisabled,
+	isExpired,
 }: InputProps) => {
 	switch (type) {
 		case 'text':
@@ -51,7 +53,11 @@ export const Input = ({
 			return (
 				<div className={styles['input-checkbox-container']}>
 					<input
-						className={styles['input-checkbox']}
+						className={
+							isExpired
+								? `${styles['input-checkbox']} ${styles['input-checkbox-expired']}`
+								: styles['input-checkbox']
+						}
 						type={type}
 						id={id}
 						name={title}

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Task } from '../Interfaces';
 import { useAppDispatch } from '../redux';
-import { updateStatus, updateTimer } from '../redux/task';
+import {
+	updateStatus,
+	updateTimer,
+	updateExpiredTodoList,
+} from '../redux/task';
 import styles from './Ticker.module.css';
 
 interface TickerProps {
@@ -49,6 +53,7 @@ export const Ticker = ({ task }: TickerProps) => {
 					} else if (min === 0 && sec === 0) {
 						dispatch(updateStatus(task.id, 'expired'));
 						dispatch(updateTimer(task.id, `${min}`));
+						dispatch(updateExpiredTodoList(task.id));
 						clearTimers();
 					}
 					break;
@@ -64,6 +69,7 @@ export const Ticker = ({ task }: TickerProps) => {
 					} else if (hr === 0) {
 						dispatch(updateStatus(task.id, 'expired'));
 						dispatch(updateTimer(task.id, `${hr}:${min}`));
+						dispatch(updateExpiredTodoList(task.id));
 						clearTimers();
 					}
 					break;

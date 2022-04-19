@@ -19,6 +19,7 @@ interface TaskCardProps {
 export const TaskCard = ({ task }: TaskCardProps) => {
 	const [newTask, setNewTask] = useState<Task>(task);
 	const { tasks } = useAppSelector((state) => state.tasks);
+	const doneItems = task.list.filter((todo) => todo.status === 'done');
 	const dispatch = useAppDispatch();
 
 	const fetchTask = (id: string) => {
@@ -37,7 +38,6 @@ export const TaskCard = ({ task }: TaskCardProps) => {
 	}, []);
 
 	const updateTimerAndStatus = () => {
-		const doneItems = task.list.filter((todo) => todo.status === 'done');
 		if (doneItems.length === task.list.length) {
 			dispatch(updateStatus(task.id, 'expired'));
 			dispatch(updateTimer(task.id, newTask.timer));
@@ -79,7 +79,12 @@ export const TaskCard = ({ task }: TaskCardProps) => {
 	return (
 		<div className={styles['task-container']}>
 			<Card>
-				<Ticker task={newTask} />
+				{task.status === 'running' && <Ticker task={newTask} />}
+				{task.status === 'expired' && (
+					<div className={styles['expired-tasks-count-container']}>
+						Expired {doneItems.length}/{task.list.length}
+					</div>
+				)}
 				{task.list.map((todo) => (
 					<Input
 						title={todo.title}
@@ -92,6 +97,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
 						label={todo.title}
 						key={todo.id}
 						isDisabled={todo.status === 'done'}
+						isExpired={todo.status === 'expired'}
 					/>
 				))}
 			</Card>

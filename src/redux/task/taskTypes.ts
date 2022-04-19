@@ -48,8 +48,16 @@ export interface UpdateStatus {
 	};
 }
 
+export interface UpdateExpiredTodoList {
+	type: 'UPDATE_EXPIRED_TODO_LIST';
+	payload: {
+		taskId: string;
+	};
+}
+
 export type TaskActions =
 	| FetchTasks
 	| UpdateTodoList
 	| UpdateTimer
-	| UpdateStatus;
+	| UpdateStatus
+	| UpdateExpiredTodoList;

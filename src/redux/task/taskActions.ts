@@ -6,10 +6,12 @@ import {
 	UpdateTodoList,
 	UpdateTimer,
 	UpdateStatus,
+	UpdateExpiredTodoList,
 } from './taskTypes';
 import { TaskActions } from './taskTypes';
 // import { AppThunk } from '../store';
 import { getIndex, getItemFromLocalStorage } from '../../utils';
+import { type } from 'os';
 
 export const fetchTasks = (): TaskActions => ({
 	type: 'FETCH_TASKS',
@@ -72,6 +74,13 @@ export const updateStatus = (
 		taskId,
 		status,
 	},
+});
+
+export const updateExpiredTodoList = (
+	taskId: string,
+): UpdateExpiredTodoList => ({
+	type: 'UPDATE_EXPIRED_TODO_LIST',
+	payload: { taskId },
 });
 
 // export const fetchTasks =

@@ -40,6 +40,10 @@
 	margin: 8px 16px;
 }
 
+.input-checkbox-expired {
+	pointer-events: none;
+}
+
 .input-checkbox-label-disabled {
 	text-decoration: line-through;
 }

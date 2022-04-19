@@ -4,6 +4,12 @@
 	align-items: stretch;
 }
 
+.expired-tasks-count-container {
+	color: #828282;
+	font-size: 24px;
+	padding: 16px 0px;
+}
+
 /* phones */
 @media only screen and (max-width: 512px) {
 	.task-container {

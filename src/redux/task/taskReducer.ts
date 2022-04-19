@@ -4,7 +4,7 @@ import {
 	getItemFromLocalStorage,
 	setItemInLocalStorage,
 } from '../../utils';
-import { Task } from '../../Interfaces';
+import { Task, Todo } from '../../Interfaces';
 import { stat } from 'fs';
 // import { fetchTasks } from './taskActions';
 
@@ -89,6 +89,29 @@ export function taskReducer(
 			return {
 				...state,
 				tasks: updatedTasks,
+			};
+		}
+		case 'UPDATE_EXPIRED_TODO_LIST': {
+			const index = findTask(action.payload.taskId);
+			const todoList = [...state.tasks[index].list];
+			const expiredTodoList = todoList.map((l) => {
+				if (l.status === 'pending') {
+					const expiredListItem: Todo = {
+						...l,
+						status: 'expired',
+					};
+					return expiredListItem;
+				} else {
+					return l;
+				}
+			});
+
+			const updateTasks = [...state.tasks];
+			updateTasks[index].list = expiredTodoList;
+
+			return {
+				...state,
+				tasks: updateTasks,
 			};
 		}
 		default:
